@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .background {
+                background: radial-gradient(circle, rgba(240,250,255,1) 0%, rgba(178,219,240,1) 100%);
+            }
+            .container {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50px;
+                border: 12px solid royalblue;
+                width: 620px;
+                height: 620px;
+                top:50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+                background: royalblue;
+                z-index: 100;
+            }
+            .space_0 {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 200px;
+                height: 200px;
+                border-top-left-radius: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_1 {
+                position: absolute;
+                left: 210px;
+                top: 0;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_2 {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 200px;
+                height: 200px;
+                border-top-right-radius: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_3 {
+                position: absolute;
+                top: 210px;
+                left:0;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_4 {
+                position: absolute;
+                top: 210px;
+                left: 210px;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_5 {
+                top: 210px;
+                right: 0;
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 130px;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_6 {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 200px;
+                height: 200px;
+                border-bottom-left-radius: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_7 {
+                position: absolute;
+                bottom: 0;
+                left: 210px;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_8 {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 200px;
+                height: 200px;
+                border-bottom-right-radius: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                background: radial-gradient(circle, ivory, white);
+            }
+            .space_0:hover {
+                background: lightgrey;
+            }
+            .space_1:hover {
+                background: lightgrey;
+            }
+            .space_2:hover {
+                background: lightgrey;
+            }
+            .space_3:hover {
+                background: lightgrey;
+            }
+            .space_4:hover {
+                background: lightgrey;
+            }
+            .space_5:hover {
+                background: lightgrey;
+            }
+            .space_6:hover {
+                background: lightgrey;
+            }
+            .space_7:hover {
+                background: lightgrey;
+            }
+            .space_8:hover {
+                background: lightgrey;
+            }
+            .icon {
+                color: transparent;
+                display: flex;
+                justify-content: center; 
+                align-items: center;
+                width: 200px;
+                font-size: 170px;
+            }
+            .space_0:hover .icon::before {
+                opacity: 0;
+            }
+            .space_1:hover .icon::before {
+                opacity: 0;
+            }
+            .space_2:hover .icon::before {
+                opacity: 0;
+            }
+            .space_3:hover .icon::before {
+                opacity: 0;
+            }
+            .space_4:hover .icon::before {
+                opacity: 0;
+            }
+            .space_5:hover .icon::before {
+                opacity: 0;
+            }
+            .space_6:hover .icon::before {
+                opacity: 0;
+            }
+            .space_7:hover .icon::before {
+                opacity: 0;
+            }
+            .space_8:hover .icon::before {
+                opacity: 0;
+            }
+            .end_container {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                width: 700px;
+                height: 975px;
+                left:50%;
+                transform: translate(-50%);
+            }
+            .end_font {
+                color: #0F52BA;
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                top: 30px;
+                width: 510px;
+                font-size: 75px;
+            }
+            .spark_1 {
+                color: white;
+                position: absolute;
+                top: 65px;
+                right: 70px;
+                font-size: 75px;
+                z-index: 1;
+                pointer-events: none;
+                animation: spark 3s infinite;
+                animation-delay: 0.7s;
+            }
+            .spark_2 {
+                color: white;
+                position: absolute;
+                top: 35px;
+                left: 80px;
+                font-size: 50px;
+                z-index: 1;
+                pointer-events: none;
+                animation: spark 3s infinite;
+                animation-delay: 0.95s;
+            }
+            .spark_3 {
+                color: white;
+                position: absolute;
+                top: 0px;
+                right: 220px;
+                font-size: 45px;
+                z-index: 1;
+                pointer-events: none;
+                animation: spark 3s infinite;
+                animation-delay: 1.6s;
+            }
+            .spark_4 {
+                color: white;
+                position: absolute;
+                top: 125px;
+                left: 160px;
+                font-size: 30px;
+                z-index: 1;
+                pointer-events: none;
+                animation: spark 3s infinite;
+            }
+            .restart_button {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                border: solid 3px cornflowerblue;
+                border-radius: 10px;
+                bottom: 40px;
+                width: 382.5px;
+                font-size: 75px;
+                color: royalblue;
+                background-image: linear-gradient(to bottom right,lightcyan, deepskyblue, dodgerblue, deepskyblue, lightcyan);
+            }
+            .restart_button::before {
+                content: 'Restart';
+            }
+            .restart_button:hover {
+                transform: scale(0.9);
+                animation: restart_btn .25s infinite backwards;
+            }
+            .restart_button:hover::before {
+                content: 'Fighting!';
+            }
+            .restart_button:active {
+                transform: scale(0.85);
+            }
+            .score_container {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, 50%);
+            }
+            .king_icon {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                border: 5px solid #fada50;
+                border-right: none;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+                font-size: 170px;
+                height: 200px;
+                width: 200px;
+                left: 125px;
+                background: #9b1c31;
+                color: gold;
+                text-shadow: 0px 0px 35px rgba(255, 215, 0, 1);
+                animation: kingscore 3s infinite backwards;
+            }
+            .king_score {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                background: ivory;
+                font-size: 170px;
+                border: 5px solid #fada50;
+                border-left: none;
+                border-top-right-radius: 50px;
+                border-bottom-right-radius: 50px;
+                color: #9b1c31;
+                height: 200px;
+                width: 200px;
+                left: 325px;
+            }
+            .queen_icon {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                border: 5px solid #7f909e;
+                border-left: none;
+                border-top-right-radius: 50px;
+                border-bottom-right-radius: 50px;
+                font-size: 170px;
+                align-items: center;
+                height: 200px;
+                width: 200px;
+                right: 125px;
+                background: #9b1c31;
+                color: silver;
+                text-shadow: 0px 0px 35px rgba(192, 192, 192, 1);
+                animation: queenscore 3s infinite backwards;
+            }
+            .queen_score {
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                background: ivory;
+                font-size: 170px;
+                align-items: center;
+                border: 5px solid #7f909e;
+                border-right: none;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+                color: #9b1c31;
+                height: 200px;
+                width: 200px;
+                right: 325px;
+            }
+            .win {
+                animation: win 1s forwards;
+            }
+            .win::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 4px;
+                background: white;
+                box-shadow: 0 0 15px 7px white;
+                transform: rotate(-20deg) scale(1.5);
+                animation: shine 2s infinite;
+            }
+            .disable_touch {
+                pointer-events: none;
+            }
+        </style>
+        <style>
+            @keyframes shine {
+                0%, 35% {
+                    left: -75%;
+                    opacity: 0;
+                }
+                72.5% {
+                    opacity: 0.85;
+                }
+                100% {
+                    left: 110%;
+                    opacity: 0;
+                }
+            }
+            @keyframes win {
+                100% {
+                    scale: 1.3;
+                }
+            }
+            @keyframes kingscore {
+                0% {
+                    text-shadow: 0px 0px 15px rgba(255, 215, 0, 1);
+                }
+                50% {
+                    text-shadow: 0px 0px 35px rgba(255, 215, 0, 1);
+                }
+                100% {
+                    text-shadow: 0px 0px 15px rgba(255, 215, 0, 1);
+                }
+            }
+            @keyframes queenscore {
+                0% {
+                    text-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
+                }
+                50% {
+                    text-shadow: 0px 0px 35px rgba(255, 255, 255, 1);
+                }
+                100% {
+                    text-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
+                }
+            }
+            @keyframes spark {
+                0% {
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <body class='background'>
+        <div id='all' class='container'>
+            <div id='0' class="space_0" onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='1' class='space_1' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='2' class='space_2' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='3' class='space_3' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='4' class='space_4' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='5' class='space_5' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='6' class='space_6' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='7' class='space_7' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+            <div id='8' class='space_8' onclick='yrturn()'>
+                <div class='icon'>
+                </div>
+            </div>
+        </div>
+        <div id='end' class='end_container' style='display: none'>
+            <div id='end_font' class='end_font'>
+            </div>
+            <div class='spark_1'>✨</div>
+            <div class='spark_2'>✨</div>
+            <div class='spark_3'>✨</div>
+            <div class='spark_4'>✨</div>
+            <button id='restart' onclick='restart()' class='restart_button'></button>
+        </div>
+        <div class='score_container'>
+            <div class='king_icon'>♚</div>
+            <div id='kscore' class='king_score'>0</div>
+            <div class='queen_icon'>♛</div>
+            <div id='qscore' class='queen_score'>0</div>
+        </div>
+        <script>
+            let round_time = 0;
+            let winner = 0;
+            let kscore = 0;
+            let qscore = 0;
+            function yrturn() {
+                const chosen = document.getElementById(event.target.id)
+                chosen.classList.add('disable_touch')
+                if (round_time % 2 === 0) {
+                    chosen.querySelector('.icon').textContent = `♚`;
+                    chosen.querySelector('.icon').style = "background: radial-gradient(circle at center, #FCF6BA, #B38728, #FBF5B7); -webkit-background-clip: text;"
+                    chosen.setAttribute('value', 1)
+                }
+                else {
+                    chosen.querySelector('.icon').textContent = `♛`;
+                    chosen.querySelector('.icon').style = 'background: radial-gradient(circle at center, whitesmoke, silver, dimgray); -webkit-background-clip: text;'
+                    chosen.setAttribute('value', -1)
+                }
+                round_time++;
+                if(round_time >= 5) {whowin();}
+                if(round_time == 9) {end_game()}
+            }
+            function whowin() {
+                let loc = [];
+                for(let i = 0; i <= 8; i++) {
+                    let val = document.getElementById(i.toString()).getAttribute('value');
+                    loc.push(parseInt(val));
+                }
+                for(let i = 0; i <= 2; i++) {
+                    let val_row = Math.abs(loc[i*3]+loc[i*3+1]+loc[i*3+2]);
+                    let val_col = Math.abs(loc[i]+loc[i+3]+loc[i+6]);
+                    if (val_row==3) {
+                        winner = loc[i*3];
+                        document.getElementById(`${i*3}`).querySelector('.icon').classList.add('win');
+                        document.getElementById(`${i*3+1}`).querySelector('.icon').classList.add('win');
+                        document.getElementById(`${i*3+2}`).querySelector('.icon').classList.add('win');
+                        break;
+                    }
+                    if (val_col==3) {
+                        winner = loc[i];
+                        document.getElementById(`${i}`).querySelector('.icon').classList.add('win');
+                        document.getElementById(`${i+3}`).querySelector('.icon').classList.add('win');
+                        document.getElementById(`${i+6}`).querySelector('.icon').classList.add('win');
+                        break;
+                    }
+                }
+                let val_cro = Math.abs(loc[0]+loc[4]+loc[8]);
+                let val_oss = Math.abs(loc[2]+loc[4]+loc[6]);
+                if (val_cro==3) {
+                    winner = loc[0];
+                    document.getElementById(`${0}`).querySelector('.icon').classList.add('win');
+                    document.getElementById(`${4}`).querySelector('.icon').classList.add('win');
+                    document.getElementById(`${8}`).querySelector('.icon').classList.add('win');
+                };
+                if (val_oss==3) {
+                    winner = loc[2];
+                    document.getElementById(`${2}`).querySelector('.icon').classList.add('win');
+                    document.getElementById(`${4}`).querySelector('.icon').classList.add('win');
+                    document.getElementById(`${6}`).querySelector('.icon').classList.add('win');
+                };
+                if (winner == 1 || winner == -1) {end_game()}
+            }
+            function end_game() {
+                document.getElementById('end').style.display='flex';
+                document.getElementById('all').classList.add('disable_touch');
+                if(winner == 1) {
+                    document.getElementById('end_font').textContent='國王獲勝!!';
+                    kscore = ++kscore;
+                    document.getElementById('kscore').textContent = `${kscore}`;
+                }
+                else if(winner == -1) {
+                    document.getElementById('end_font').textContent='皇后獲勝!!';
+                    qscore = ++qscore;
+                    document.getElementById('qscore').textContent = `${qscore}`;
+                }
+                else {
+                    document.getElementById('end_font').textContent='雙方平手!!';
+                }
+            }
+            function restart() {
+                round_time = 0;
+                winner = 0;
+                document.getElementById('end').style.display='none';
+                for(i = 0; i<=8; i++) {
+                    document.getElementById(`${i}`).querySelector('.icon').innerHTML = '';
+                    document.getElementById(`${i}`).classList.remove('disable_touch');
+                    document.getElementById(`${i}`).removeAttribute('value');
+                    document.getElementById(`${i}`).querySelector('.icon').classList.remove('win');
+                }
+                document.getElementById('all').classList.remove('disable_touch');
+            }
+        </script>
+    </body>
+</html>
